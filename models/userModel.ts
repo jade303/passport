@@ -29,7 +29,7 @@ const userModel = {
     if (user) {
       return user;
     }
-    throw new Error(`Couldn't find user with email: ${email}`);
+    throw new Error(`Couldn't find user with email: ${email}`); //I don't think this is helpful
   },
 
   findById: (id: Number) => {

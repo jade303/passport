@@ -1,13 +1,20 @@
 import {userModel} from "../models/userModel";
 
 const getUserByEmailIdAndPassword = (email: string, password: string) => {
+  try {
   let user = userModel.findOne(email);
   if (user) {
     if (isUserValid(user, password)) {
       return user;
+    } else {
+      return null;
     }
   }
-  return null;
+  // return null;
+  } catch (err){ //catch that stupid error
+    if (err instanceof Error)
+      return null;//err.message;
+  }
 };
 const getUserById = (id:any) => {
   let user = userModel.findById(id);

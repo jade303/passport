@@ -7,7 +7,6 @@ export interface PassportStrategy {
 
 declare global {
     namespace Express {
-  //    interface Session{    }
       interface User{
         id: number;
         name: string;

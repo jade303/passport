@@ -23,6 +23,12 @@ app.use(
   })
 );
 
+declare module "express-session" {
+  interface SessionData {
+    messages: string;
+  }
+}
+
 import authRoute from "./routes/authRoute";
 import indexRoute from "./routes/indexRoute";
 

@@ -9,14 +9,26 @@ const localStrategy = new LocalStrategy(
     passwordField: "password",
   },
   (email, password, done) => {
-    const user = getUserByEmailIdAndPassword(email, password);
-    return user
-      ? done(null, user)
-      : done(null, false, {
-          message: "Your login details are not valid. Please try again",
-        });
-  }
+ // Check if user exists in databse
+ const user = getUserByEmailIdAndPassword(email, password);
+ return user
+   ? done(null, user)
+   : done(null, false, {
+       message: "Your login details are not valid. Please try again.",
+     });
+}
 );
+    // if (typeof user!= "string") {
+    //   return done(null, user, {message: ""});
+    // } else {
+    //   return done(null, false, {
+    //     message: user}); //This is the message I want
+    // }
+    //  else if (user===null) {
+    //     return done(null, false, {
+    //   message: ("Couldn't find user with email: "+ email)});
+    // }
+
 
 /*
 */
